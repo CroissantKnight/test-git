@@ -1,0 +1,50 @@
+{% extends "basetemplate.html" %} {% load static %} {% block title %}
+<title>นักศึกษา</title>
+{% endblock %} {% block content %}
+
+<h1>จำนวนนักศึกษา</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">เลข</th>
+      <th scope="col">ชื่อ</th>
+      <th scope="col">อายุ</th>
+      <th scope="col">สาขา</th>
+      <th scope="col">แก้ไข</th>
+      <th scope="col">ลบ</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-devider">
+    {% for person in all_person %}
+    <tr>
+      <td scope="row">{{ person.id }}</td>
+      <td>{{ person.pname }}</td>
+      <td>{{ person.page }}</td>
+      <td>{{ person.pdepartment }}</td>
+      <td>
+        <a href="/edit/{{person.id}}">
+          <img
+            src="{% static 'image/edit_icon.jpg' %}"
+            alt="แก้ไข"
+            style="width: 35px; height: 25px"
+          />
+        </a>
+      </td>
+      <td>
+        <a
+          href="/delete/{{person.id}}"
+          onclick="return confirm('ต้องการลบ {{ person.name }} หรือไม่?')"
+        >
+          <img
+            src="{% static 'image/delete_icon.png' %}"
+            alt="ลบ"
+            style="width: 25px; height: 25px"
+          />
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}" async defer></script>
+{% endblock %}

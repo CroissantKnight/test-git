@@ -1,0 +1,31 @@
+{% extends "basetemplate.html" %} {% load static %} {% block title %}
+<title>นักศึกษา</title>
+{% endblock %} {% block content %}
+
+<h1>จำนวนนักศึกษา</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ชื่อ</th>
+      <th scope="col">รหัสนิสิต</th>
+      <th scope="col">เพศ</th>
+      <th scope="col">อายุ</th>
+      <th scope="col">สาขา</th>
+      <th scope="col">แก้ไข</th>
+      <th scope="col">ลบ</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-devider">
+    {% for student in all_student %}
+    <tr>
+      <td scope="row">{{ Student.fname }}</td>
+      <td>{{ Student.std_number }}</td>
+      <td>{{ Student.gender }}</td>
+      <td>{{ Student.age }}</td>
+      <td>{{ Student.department }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}" async defer></script>
+{% endblock %}

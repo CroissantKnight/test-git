@@ -1,0 +1,14 @@
+{% extends "basetemplate.html" %} {% load static %} {% block title %}
+<title>บันทึก</title>
+{% endblock %} {% block content %}
+
+<h1>บันทึกข้อมูล</h1>
+<form method = "post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <button type="submit" class btn bnt-primary">บันทึก</button>
+</form>
+
+{% endblock %}
